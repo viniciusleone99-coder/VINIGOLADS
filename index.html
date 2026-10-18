@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VinigolADS · LIFEAPP — comer bem sem complicação</title>
+<meta name="description" content="LIFEAPP é o webapp da VinigolADS com receitas naturais, dieta simples e escolhas saudáveis para o dia a dia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f8f1; --paper:#ffffff; --ink:#12352a; --ink2:#47625a;
+  --leaf:#2c8a4b; --leaf-d:#1b5e35; --lime:#cfe36a; --beet:#b3345f; --line:#d9e3d4;
+  --h:'Bricolage Grotesque',Georgia,serif; --b:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--b);background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:var(--h);line-height:1.08;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--beet);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;background:var(--beet);color:#fff;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 16px var(--b);transition:transform .2s,background .2s}
+.btn:hover{background:#962a4f;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:10;background:rgba(245,248,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:800 22px var(--h);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border-radius:50% 50% 50% 4px;background:var(--leaf);display:block;transform:rotate(-45deg)}
+.logo b{color:var(--beet);font-weight:800}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{text-decoration:none;font-weight:500;color:var(--ink2)}
+nav a:hover{color:var(--ink)}
+.nav .btn{padding:10px 20px;font-size:15px}
+
+/* hero */
+.hero{padding-top:150px;padding-bottom:80px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,76px);font-weight:800}
+.hero p.lead{font-size:20px;color:var(--ink2);max-width:520px;margin:24px 0 32px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.plate-box{background:var(--paper);border-radius:40px 40px 40px 8px;padding:28px;box-shadow:0 30px 60px -30px rgba(18,53,42,.35)}
+.plate-box svg{width:100%;height:auto;display:block}
+.plate-box h2{font-size:20px;margin:6px 0 4px}
+.plate-box p{font-size:15px;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font:500 14px var(--b);cursor:pointer;color:var(--ink);transition:.2s}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.seg{transition:opacity .35s,transform .35s;transform-origin:150px 150px}
+.seg.off{opacity:0;transform:scale(.6)}
+.plate-msg{margin-top:14px;font-weight:600;color:var(--leaf-d);min-height:26px}
+
+/* produto */
+.prod{background:var(--ink);color:#eaf2e8}
+.prod h2{font-size:clamp(32px,4.4vw,52px);max-width:640px}
+.prod .sub{color:#b9cdc2;max-width:560px;margin:16px 0 48px}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid #2d5446}
+.feat div{padding:30px 32px 30px 0;border-bottom:1px solid #2d5446}
+.feat div:nth-child(even){padding-left:32px;border-left:1px solid #2d5446}
+.feat h3{font-size:24px;margin-bottom:8px;color:var(--lime)}
+.feat p{color:#c6d7cd;font-size:16px}
+
+/* sobre */
+.about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.about h2{font-size:clamp(30px,4vw,48px)}
+.about p{color:var(--ink2);margin-bottom:18px;max-width:560px}
+.stats{display:grid;gap:18px}
+.stat{background:var(--paper);border-radius:20px;padding:22px 26px;border-left:8px solid var(--leaf)}
+.stat:nth-child(2){border-color:var(--lime)}
+.stat:nth-child(3){border-color:var(--beet)}
+.stat strong{font:800 30px var(--h);display:block}
+.stat span{color:var(--ink2);font-size:15px}
+
+/* valores */
+.values{background:var(--lime)}
+.values h2{font-size:clamp(30px,4vw,48px);margin-bottom:40px}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.vgrid h3{font-size:24px;margin-bottom:8px}
+.vgrid p{color:#2c4a1d;font-size:16px}
+.vgrid div{border-top:4px solid var(--ink);padding-top:18px}
+
+/* faq */
+.faq h2{font-size:clamp(30px,4vw,48px);margin-bottom:32px}
+details{border-bottom:1px solid var(--line);padding:20px 0;max-width:760px}
+summary{font:600 20px var(--h);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;line-height:1;color:var(--beet);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--ink2);margin-top:12px;max-width:620px}
+
+/* cta final */
+.final{padding:0 0 96px}
+.banner{background:var(--leaf-d);color:#fff;border-radius:40px;padding:72px 48px;text-align:center}
+.banner h2{font-size:clamp(32px,4.6vw,56px);max-width:720px;margin:0 auto 18px}
+.banner p{color:#cfe4d6;margin-bottom:30px}
+
+/* footer */
+footer{background:var(--ink);color:#b9cdc2;padding:64px 0 32px;font-size:15px}
+.pols{margin-top:36px;border-top:1px solid #2d5446}
+.pd{border-bottom:1px solid #2d5446;padding:14px 0;max-width:none}
+.pd summary{font:600 16px var(--h);color:#fff}
+.pd summary::after{color:var(--lime);font-size:22px}
+.pd h5{font:600 15px var(--h);color:var(--lime);margin:16px 0 4px}
+.pd ul{margin-bottom:4px}
+.pd li{color:#b9cdc2;font-size:14px;margin-bottom:4px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px}
+footer h4{font:600 17px var(--h);color:#fff;margin-bottom:12px}
+footer ul{list-style:disc;padding-left:20px}
+footer li{margin-bottom:6px}
+footer li::marker{color:var(--lime)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--lime)}
+.legal{border-top:1px solid #2d5446;margin-top:40px;padding-top:20px;font-size:13px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  nav ul{display:none}
+  section{padding:68px 0}
+  .hero{padding-top:120px}
+  .hero .wrap,.about .wrap,.fgrid{grid-template-columns:1fr}
+  .vgrid{grid-template-columns:1fr}
+  .feat{grid-template-columns:1fr}
+  .feat div:nth-child(even){padding-left:0;border-left:0}
+  .banner{padding:48px 24px;border-radius:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#topo" aria-label="VinigolADS"><i></i>Vinigol<b>ADS</b></a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#lifeapp">LIFEAPP</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#contato">Quero testar</a>
+  </div>
+</header>
+
+<main id="topo">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Comer bem não precisa ser difícil.</h1>
+      <p class="lead">O LIFEAPP reúne receitas naturais e escolhas simples para você montar uma rotina alimentar leve, saborosa e que cabe na sua semana.</p>
+      <div class="cta-row">
+        <a class="btn" href="#contato">Quero testar o LIFEAPP</a>
+        <a class="btn ghost" href="#lifeapp">Ver como funciona</a>
+      </div>
+    </div>
+    <div class="plate-box rv">
+      <svg viewBox="0 0 300 300" role="img" aria-label="Prato ilustrado que muda conforme os ingredientes escolhidos">
+        <circle cx="150" cy="150" r="140" fill="#eef3e8"/>
+        <circle cx="150" cy="150" r="118" fill="#fff" stroke="#d9e3d4" stroke-width="3"/>
+        <g class="seg" data-k="folhas"><path d="M150 150 L150 40 A110 110 0 0 1 245 95 Z" fill="#2c8a4b"/></g>
+        <g class="seg" data-k="grao"><path d="M150 150 L245 95 A110 110 0 0 1 245 205 Z" fill="#e0b84a"/></g>
+        <g class="seg" data-k="legumes"><path d="M150 150 L245 205 A110 110 0 0 1 150 260 Z" fill="#e8743b"/></g>
+        <g class="seg" data-k="proteina"><path d="M150 150 L150 260 A110 110 0 0 1 55 205 Z" fill="#b3345f"/></g>
+        <g class="seg" data-k="fruta"><path d="M150 150 L55 205 A110 110 0 0 1 55 95 Z" fill="#cfe36a"/></g>
+        <g class="seg" data-k="sementes"><path d="M150 150 L55 95 A110 110 0 0 1 150 40 Z" fill="#7a5a3a"/></g>
+        <circle cx="150" cy="150" r="22" fill="#fff"/>
+      </svg>
+      <h2>Monte um prato</h2>
+      <p>Toque nos grupos para ver como um prato equilibrado se forma.</p>
+      <div class="chips" id="chips">
+        <button class="chip" aria-pressed="true" data-k="folhas">Folhas</button>
+        <button class="chip" aria-pressed="true" data-k="grao">Grãos</button>
+        <button class="chip" aria-pressed="true" data-k="legumes">Legumes</button>
+        <button class="chip" aria-pressed="true" data-k="proteina">Proteínas</button>
+        <button class="chip" aria-pressed="true" data-k="fruta">Frutas</button>
+        <button class="chip" aria-pressed="true" data-k="sementes">Sementes</button>
+      </div>
+      <div class="plate-msg" id="msg" aria-live="polite">Prato completo: seis grupos no mesmo dia.</div>
+    </div>
+  </div>
+</section>
+
+<section class="prod" id="lifeapp">
+  <div class="wrap">
+    <h2 class="rv">LIFEAPP: o webapp de receitas naturais da VinigolADS</h2>
+    <p class="sub rv">Abra no navegador, sem instalar nada. Escolha o que quer comer e deixe o app organizar o resto.</p>
+    <div class="feat rv">
+      <div><h3>Receitas naturais</h3><p>Pratos feitos com comida de verdade, com ingredientes fáceis de achar e preparo que cabe na correria.</p></div>
+      <div><h3>Dieta sem drama</h3><p>Sugestões de cardápio para o seu objetivo, com trocas simples quando faltar um ingrediente.</p></div>
+      <div><h3>Lista de compras</h3><p>Escolheu as receitas da semana? A lista de mercado se monta sozinha, sem repetir item.</p></div>
+      <div><h3>Produtos saudáveis</h3><p>Dicas para ler rótulos e escolher melhor no mercado, de snacks a ingredientes do dia a dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="rv">
+      <h2>Feito no Brasil para quem quer cuidar da alimentação sem regra rígida.</h2>
+    </div>
+    <div class="rv">
+      <p>A VinigolADS cria webapps que resolvem problemas do dia a dia. O LIFEAPP nasceu de uma pergunta simples: por que comer bem parece tão trabalhoso?</p>
+      <p>Por isso o app é direto. Você vê a receita, o que precisa comprar e como preparar. Serve para homens e mulheres, de quem está começando a mudar hábitos a quem só quer variar o cardápio.</p>
+      <div class="stats">
+        <div class="stat"><strong>Comida de verdade</strong><span>Receitas baseadas em ingredientes naturais</span></div>
+        <div class="stat"><strong>Direto no navegador</strong><span>Sem download, no celular ou no computador</span></div>
+        <div class="stat"><strong>Para todos</strong><span>Pensado para homens e mulheres em qualquer fase</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values" id="valores">
+  <div class="wrap">
+    <h2 class="rv">No que a gente acredita</h2>
+    <div class="vgrid rv">
+      <div><h3>Simplicidade</h3><p>Se a receita é complicada, ela não entra. Menos etapas, mais prato na mesa.</p></div>
+      <div><h3>Naturalidade</h3><p>Priorizamos comida simples e ingredientes que você reconhece no rótulo.</p></div>
+      <div><h3>Autonomia</h3><p>Você decide o que comer. O app ajuda com ideias, trocas e organização.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="duvidas">
+  <div class="wrap">
+    <h2 class="rv">Dúvidas frequentes</h2>
+    <div class="rv">
+      <details><summary>Preciso instalar alguma coisa?</summary><p>Não. O LIFEAPP é um webapp: você acessa pelo navegador, no celular ou no computador.</p></details>
+      <details><summary>O LIFEAPP substitui acompanhamento profissional?</summary><p>Não. O app oferece ideias e organização. Para dieta com objetivo clínico ou restrição de saúde, procure um nutricionista ou médico.</p></details>
+      <details><summary>Serve para quem tem pouco tempo?</summary><p>Sim. As receitas são pensadas para rotina corrida, com poucos passos e ingredientes fáceis de achar.</p></details>
+      <details><summary>Como falo com a VinigolADS?</summary><p>Pelo formulário de contato desta página. Respondemos assim que possível.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="wrap">
+    <div class="banner rv">
+      <h2>Sua próxima refeição pode ser a mais leve da semana.</h2>
+      <p>Entre em contato e conheça o LIFEAPP.</p>
+      <a class="btn" href="#">Quero testar o LIFEAPP</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>VinigolADS</h4>
+        <ul>
+          <li>Webapps para o dia a dia</li>
+          <li>Criadores do LIFEAPP</li>
+          <li>Rua do Angico, 1646, Brasil</li>
+          <li>CPF: 026.835.705-62</li>
+          <li>Razão social: VINIGOLADS</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#lifeapp">LIFEAPP</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#privacidade">Política de Privacidade</a></li>
+          <li><a href="#reembolso">Reembolso e Cancelamento</a></li>
+          <li><a href="#termos">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li>E-mail: <a href="mailto:viniciusleone99@gmail.com">viniciusleone99@gmail.com</a></li>
+          <li>Telefone / WhatsApp: (74) 9994-6008</li>
+          <li>Segunda a sexta, 9h às 18h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pols">
+<details class="pd" id="privacidade"><summary>Política de Privacidade</summary>
+      <ul><li>A VinigolADS (“nós”) respeita a sua privacidade e trata dados pessoais conforme a Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018).</li></ul>
+      <h5>Dados que coletamos</h5>
+      <ul>
+        <li>Dados informados por você: nome, e-mail e mensagens enviadas pelo contato.</li>
+        <li>Dados de uso do LIFEAPP: receitas e preferências que você salvar, e informações técnicas como navegador e dispositivo.</li>
+        <li>Dados de pagamento: tratados diretamente pela Stripe. Não temos acesso ao número completo do seu cartão.</li>
+      </ul>
+      <h5>Como usamos</h5>
+      <ul><li>Para fornecer e melhorar o LIFEAPP, responder suas mensagens, processar pagamentos, cumprir obrigações legais e prevenir fraudes.</li><li>Não vendemos seus dados.</li></ul>
+      <h5>Compartilhamento</h5>
+      <ul><li>Compartilhamos dados apenas com prestadores necessários à operação, como processamento de pagamentos (Stripe) e hospedagem, ou quando a lei exigir.</li></ul>
+      <h5>Seus direitos</h5>
+      <ul><li>Você pode pedir confirmação de tratamento, acesso, correção, anonimização, portabilidade e exclusão dos seus dados, além de revogar consentimentos.</li><li>Escreva para o e-mail de atendimento no rodapé.</li></ul>
+      <h5>Segurança e retenção</h5>
+      <ul><li>Usamos conexão criptografada (HTTPS) e limitamos o acesso aos dados.</li><li>Guardamos as informações pelo tempo necessário para as finalidades acima ou para cumprir obrigações legais.</li></ul>
+    </details>
+<details class="pd" id="reembolso"><summary>Política de Reembolso e Cancelamento</summary>
+      <h5>Direito de arrependimento</h5>
+      <ul><li>Em compras feitas pela internet, você pode desistir em até 7 dias corridos após a contratação (art. 49 do Código de Defesa do Consumidor) e receber o reembolso integral.</li></ul>
+      <h5>Depois dos 7 dias</h5>
+      <ul><li>Reembolsos fora desse prazo são analisados caso a caso, por exemplo em cobrança duplicada, cobrança indevida ou falha do serviço que impeça o uso do LIFEAPP e que não tenhamos resolvido.</li></ul>
+      <h5>Como pedir</h5>
+      <ul><li>Envie um e-mail para o atendimento informando o e-mail da compra e o motivo.</li><li>Respondemos em até 3 dias úteis.</li></ul>
+      <h5>Prazo do reembolso</h5>
+      <ul><li>Aprovado o pedido, iniciamos o reembolso em até 10 dias úteis, na mesma forma de pagamento.</li><li>O valor pode levar mais alguns dias para aparecer na fatura, conforme o banco ou a operadora do cartão.</li></ul>
+      <h5>Cancelamento de assinatura</h5>
+      <ul><li>Se o LIFEAPP for cobrado por assinatura, você pode cancelar a qualquer momento pelo atendimento.</li><li>O acesso continua até o fim do período já pago e não há novas cobranças depois do cancelamento.</li></ul>
+      <h5>Contestações</h5>
+      <ul><li>Antes de abrir uma contestação no cartão, fale com a gente.</li><li>Resolvemos a maioria dos casos mais rápido por aqui.</li></ul>
+    </details>
+<details class="pd" id="termos"><summary>Termos de Uso</summary>
+      <ul><li>Ao usar o LIFEAPP, você concorda com estes termos.</li></ul>
+      <h5>O serviço</h5>
+      <ul><li>O LIFEAPP é um webapp com receitas naturais, sugestões de dieta e dicas de produtos saudáveis, oferecido pela VinigolADS.</li></ul>
+      <h5>Aviso de saúde</h5>
+      <ul><li>O conteúdo é informativo e não substitui consulta com nutricionista ou médico.</li><li>Em caso de doença, alergia, gestação ou restrição alimentar, procure um profissional antes de mudar sua dieta.</li></ul>
+      <h5>Sua conta e uso</h5>
+      <ul><li>Você é responsável pelas informações da sua conta e pelo uso que fizer do app.</li><li>Não é permitido copiar, revender ou usar o LIFEAPP de forma ilegal ou que prejudique outros usuários.</li></ul>
+      <h5>Propriedade intelectual</h5>
+      <ul><li>Textos, receitas, marca e código do LIFEAPP pertencem à VinigolADS e não podem ser reproduzidos sem autorização.</li></ul>
+      <h5>Alterações e lei aplicável</h5>
+      <ul><li>Podemos atualizar estes termos e avisaremos sobre mudanças relevantes.</li><li>Aplica-se a lei brasileira.</li></ul>
+    </details>
+</div>
+    <div class="legal">
+      <ul>
+        <li>© <span id="y">2026</span> VinigolADS. Todos os direitos reservados.</li>
+        <li>O conteúdo do LIFEAPP é informativo e não substitui orientação de nutricionista ou médico.</li>
+        <li>Pagamentos são processados pela Stripe; a VinigolADS não armazena dados de cartão.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var names={folhas:'folhas',grao:'grãos',legumes:'legumes',proteina:'proteínas',fruta:'frutas',sementes:'sementes'};
+var chips=document.querySelectorAll('.chip'),msg=document.getElementById('msg');
+chips.forEach(function(c){c.addEventListener('click',function(){
+  var on=c.getAttribute('aria-pressed')!=='true';
+  c.setAttribute('aria-pressed',on);
+  document.querySelector('.seg[data-k="'+c.dataset.k+'"]').classList.toggle('off',!on);
+  var miss=[];chips.forEach(function(x){if(x.getAttribute('aria-pressed')!=='true')miss.push(names[x.dataset.k])});
+  msg.textContent=miss.length===0?'Prato completo: seis grupos no mesmo dia.':miss.length===6?'Prato vazio. Toque nos grupos para montar.':'Faltam: '+miss.join(', ')+'.';
+})});
+document.querySelectorAll('footer a[href^="#"]').forEach(function(l){l.addEventListener('click',function(){var d=document.querySelector(l.getAttribute('href'));if(d&&d.tagName==='DETAILS')d.open=true})});
+</script>
+</body>
+</html>
